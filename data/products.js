@@ -1,51 +1,32 @@
 const products = [
-
-{
-id:1,
-name:"Sandwich",
-code:"001",
-priceEUR:5.00,
-priceMDL:100.00,
-priceUSD:5.80,
-priceGBP:4.50,
-image:"images/sandwich.png",
-qty:0
-},
-
-{
-id:2,
-name:"Coffee",
-code:"002",
-priceEUR:3.00,
-priceMDL:60.00,
-priceUSD:3.50,
-priceGBP:2.70,
-image:"images/coffee.png",
-qty:0
-},
-
-{
-id:3,
-name:"Tea",
-code:"003",
-priceEUR:2.50,
-priceMDL:50.00,
-priceUSD:2.90,
-priceGBP:2.20,
-image:"images/tea.png",
-qty:0
-},
-
-{
-id:4,
-name:"Water",
-code:"004",
-priceEUR:2.00,
-priceMDL:40.00,
-priceUSD:2.30,
-priceGBP:1.80,
-image:"images/water.png",
-qty:0
-}
-
+  { id: 1, name: "Sandwich în sortiment", code: "001", priceEUR: 5.00, priceMDL: 100.00, priceUSD: 6.00, priceGBP: 5.00, image: "images/sandwich.png", qty: 0 },
+  { id: 2, name: "Ceai (verde/negru)", code: "002", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/tea.png", qty: 0 },
+  { id: 3, name: "Cafea", code: "003", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/coffee.png", qty: 0 },
+  { id: 4, name: "Apă plată / carbogazoasă", code: "004", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/water.png", qty: 0 },
+  { id: 5, name: "Cola / Fanta / Sprite / Schw.", code: "005", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/soda.png", qty: 0 },
+  { id: 6, name: "Croissant 7 Days", code: "006", priceEUR: 4.00, priceMDL: 80.00, priceUSD: 5.00, priceGBP: 4.00, image: "images/croissant.png", qty: 0 },
+  { id: 7, name: "Peanuts Fiesta", code: "007", priceEUR: 4.00, priceMDL: 80.00, priceUSD: 5.00, priceGBP: 4.00, image: "images/peanuts.png", qty: 0 },
+  { id: 8, name: "Crackers Flint", code: "008", priceEUR: 4.00, priceMDL: 80.00, priceUSD: 5.00, priceGBP: 4.00, image: "images/crackers.png", qty: 0 },
+  { id: 9, name: "Sticks Croco", code: "009", priceEUR: 4.00, priceMDL: 80.00, priceUSD: 5.00, priceGBP: 4.00, image: "images/sticks.png", qty: 0 },
+  { id: 10, name: "Chips Pringles", code: "010", priceEUR: 4.00, priceMDL: 80.00, priceUSD: 5.00, priceGBP: 4.00, image: "images/pringles.png", qty: 0 },
+  { id: 11, name: "Chocolate (Twix, Bounty, Snickers)", code: "012", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/chocolate.png", qty: 0 },
+  { id: 12, name: "Cookies Oreo", code: "013", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/oreo.png", qty: 0 },
+  { id: 13, name: "Peanuts M&M", code: "014", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/mandm.png", qty: 0 },
+  { id: 14, name: "Kinder Surprise", code: "015", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/kinder.png", qty: 0 },
+  { id: 15, name: "Suc în sortiment", code: "016", priceEUR: 3.00, priceMDL: 60.00, priceUSD: 4.00, priceGBP: 3.00, image: "images/juice.png", qty: 0 },
+  { id: 16, name: "Sparkling Wine", code: "017", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/sparkling.png", qty: 0 },
+  { id: 17, name: "Wine în sortiment", code: "018", priceEUR: 5.00, priceMDL: 100.00, priceUSD: 6.00, priceGBP: 5.00, image: "images/wine.png", qty: 0 },
+  { id: 18, name: "Bere", code: "019", priceEUR: 6.00, priceMDL: 120.00, priceUSD: 7.00, priceGBP: 6.00, image: "images/beer.png", qty: 0 },
+  { id: 19, name: "Vodca Finlandia", code: "020", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/vodka.png", qty: 0 },
+  { id: 20, name: "Whisky Jack Daniel's", code: "021", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/jackdaniels.png", qty: 0 },
+  { id: 21, name: "Whisky Jameson", code: "022", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/jameson.png", qty: 0 },
+  { id: 22, name: "Divin", code: "023", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/divin.png", qty: 0 },
+  { id: 23, name: "Liqueur Jagermeister", code: "024", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/jagermeister.png", qty: 0 },
+  { id: 24, name: "Energy Drink Red Bull", code: "025", priceEUR: 5.00, priceMDL: 100.00, priceUSD: 6.00, priceGBP: 5.00, image: "images/redbull.png", qty: 0 },
+  { id: 25, name: "Alte servicii vânzare la bord", code: "026", priceEUR: 50.00, priceMDL: 1000.00, priceUSD: 55.00, priceGBP: 50.00, image: "images/services.png", qty: 0 },
+  { id: 26, name: "Glads Chicken", code: "027", priceEUR: 5.00, priceMDL: 100.00, priceUSD: 6.00, priceGBP: 5.00, image: "images/chicken.png", qty: 0 },
+  { id: 27, name: "Cocktail Whiskey & Cola", code: "028", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/cocktail.png", qty: 0 },
+  { id: 28, name: "Liqueur Piana Vyshnia", code: "030", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/piana.png", qty: 0 },
+  { id: 29, name: "AIRPLANE TOYS", code: "031", priceEUR: 7.00, priceMDL: 140.00, priceUSD: 8.00, priceGBP: 7.00, image: "images/airplane.png", qty: 0 },
+  { id: 30, name: "DRAGON TOYS", code: "032", priceEUR: 5.00, priceMDL: 100.00, priceUSD: 6.00, priceGBP: 5.00, image: "images/dragon.png", qty: 0 }
 ];
