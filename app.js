@@ -64,9 +64,22 @@ function createProductCard(product) {
   const div = document.createElement('div');
   div.className = 'product-card';
   
+  // Adaugă un event listener pentru întregul card (inclusiv imagine)
+  div.addEventListener('click', (e) => {
+    // Verifică dacă s-a făcut click pe un buton (+ sau -)
+    if (e.target.closest('.qty-btn')) {
+      return; // Dacă s-a făcut click pe buton, nu face nimic
+    }
+    
+    // Adaugă produsul în coș
+    product.qty = (product.qty || 0) + 1;
+    saveProducts();
+    renderAll();
+  });
+  
   div.innerHTML = `
     <div class="product-image">
-      <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}">
+      <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2224%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3ENo Image%3C/text%3E%3C/svg%3E'">
       ${product.qty > 0 ? `<div class="badge">${product.qty}</div>` : ''}
     </div>
     <div class="product-name">${product.name}</div>
@@ -87,6 +100,19 @@ function createProductCard(product) {
 function createProductListItem(product) {
   const div = document.createElement('div');
   div.className = 'product-list-item';
+  
+  // Adaugă event listener pentru întregul rând
+  div.addEventListener('click', (e) => {
+    // Verifică dacă s-a făcut click pe un buton (+ sau -)
+    if (e.target.closest('.qty-btn')) {
+      return; // Dacă s-a făcut click pe buton, nu face nimic
+    }
+    
+    // Adaugă produsul în coș
+    product.qty = (product.qty || 0) + 1;
+    saveProducts();
+    renderAll();
+  });
   
   div.innerHTML = `
     <span class="list-name">${product.name}</span>
@@ -267,7 +293,11 @@ function setupEventListeners() {
   // View mode toggle
   document.getElementById('viewMode').addEventListener('click', () => {
     currentView = currentView === 'grid' ? 'list' : 'grid';
-    document.getElementById('viewMode').textContent = currentView === 'grid' ? '📷 Poze' : '📋 Listă';
+    if (currentView === 'grid') {
+      document.getElementById('viewMode').textContent = '📋 Listă';
+    } else {
+      document.getElementById('viewMode').textContent = '📷 Poze';
+    }
     renderProducts();
   });
   
