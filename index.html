@@ -1,61 +1,90 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0F3D91">
 
-    <title>BuyOnBoard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>BuyOnBoard</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<header class="top-bar">
-    <button class="view-btn">☰</button>
+<header class="topbar">
 
-    <h1>BuyOnBoard</h1>
+<div class="logo">
 
-    <button class="clear-btn">🗑</button>
+BuyOnBoard
+
+</div>
+
+<div class="top-buttons">
+
+<button id="viewMode">
+
+📷 Poze
+
+</button>
+
+<button id="clearCart">
+
+🗑 Șterge
+
+</button>
+
+</div>
+
 </header>
 
-<section class="search-section">
-    <input
-        type="text"
-        placeholder="Caută produs..."
-        id="search">
+<section class="search">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Caută produs după denumire sau cod">
+
 </section>
 
 <main>
 
-    <div class="placeholder">
+<section id="products">
 
-        <h2>Bine ai venit!</h2>
+</section>
 
-        <p>
-            Aplicația BuyOnBoard începe să prindă viață.
-        </p>
+<section id="cart" class="hidden">
 
-    </div>
+</section>
 
 </main>
 
-<nav class="bottom-nav">
+<nav class="bottomBar">
 
-    <button class="active">
-        📦<br>
-        Produse
-    </button>
+<button id="productsBtn" class="active">
 
-    <button>
-        🛒<br>
-        Coș
-    </button>
+📦<br>
+
+Produse
+
+</button>
+
+<button id="cartBtn">
+
+🛒<br>
+
+Coș
+
+</button>
 
 </nav>
+
+<script src="data/products.js"></script>
 
 <script src="app.js"></script>
 
 </body>
+
 </html>
