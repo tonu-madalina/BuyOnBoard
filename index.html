@@ -1,90 +1,45 @@
 <!DOCTYPE html>
 <html lang="ro">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BuyOnBoard</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0F3D91">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>BuyOnBoard</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="topbar">
+    <div class="logo">✈️ BuyOnBoard</div>
+    <div class="top-buttons">
+      <button id="viewMode">📷 Poze</button>
+    </div>
+  </header>
 
-<header class="topbar">
+  <section class="search">
+    <input type="text" id="searchInput" placeholder="🔍 Caută produs...">
+  </section>
 
-<div class="logo">
+  <main>
+    <section id="products"></section>
+    <section id="cart"></section>
+  </main>
 
-BuyOnBoard
+  <nav class="bottomBar">
+    <button id="productsBtn" class="active">
+      <span class="icon">📦</span>
+      Produse
+    </button>
+    <button id="cartBtn">
+      <span class="icon">🛒</span>
+      Coș
+      <span id="cartBadge" class="badge">0</span>
+    </button>
+  </nav>
 
-</div>
-
-<div class="top-buttons">
-
-<button id="viewMode">
-
-📷 Poze
-
-</button>
-
-<button id="clearCart">
-
-🗑 Șterge
-
-</button>
-
-</div>
-
-</header>
-
-<section class="search">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Caută produs după denumire sau cod">
-
-</section>
-
-<main>
-
-<section id="products">
-
-</section>
-
-<section id="cart" class="hidden">
-
-</section>
-
-</main>
-
-<nav class="bottomBar">
-
-<button id="productsBtn" class="active">
-
-📦<br>
-
-Produse
-
-</button>
-
-<button id="cartBtn">
-
-🛒<br>
-
-Coș
-
-</button>
-
-</nav>
-
-<script src="data/products.js"></script>
-
-<script src="app.js"></script>
-
+  <script src="data/products.js"></script>
+  <script src="app.js"></script>
 </body>
-
 </html>
