@@ -503,4 +503,49 @@ body {
     min-height: 36px;
   }
   
- 
+  .cart-header,
+  .cart-row {
+    grid-template-columns: 2fr 0.8fr 0.8fr 1.2fr;
+    font-size: 12px;
+  }
+  
+  .cart-total {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    font-size: 13px;
+    gap: 4px;
+  }
+  
+  .rest-label {
+    min-width: 80px;
+    font-size: 13px;
+  }
+  
+  .rest-value {
+    font-size: 18px;
+  }
+  
+  .currency-btn {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  #products {
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .product-card {
+    padding: 8px;
+  }
+  
+  .product-name {
+    font-size: 12px;
+    min-height: 32px;
+  }
+  
+  .product-price {
+    font-size: 14px;
+  }
+}
