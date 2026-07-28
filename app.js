@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Verifică actualizări
   checkForUpdates();
+  
+  // Setup scroll button
+  setupScrollButton();
 });
 
 // ===== LOAD/SAVE PRODUCTS =====
@@ -292,9 +295,33 @@ function updateCartBadge() {
 function checkForUpdates() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
-      registration.update();  // Verifică dacă există o nouă versiune
+      registration.update();
     });
   }
+}
+
+// ===== SCROLL TO TOP BUTTON =====
+function setupScrollButton() {
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  
+  if (!scrollBtn) return;
+  
+  // Arată/ascunde butonul în funcție de scroll
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollBtn.classList.add('show');
+    } else {
+      scrollBtn.classList.remove('show');
+    }
+  });
+  
+  // Scroll la începutul paginii la click
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 }
 
 // ===== EVENT LISTENERS =====
@@ -344,94 +371,3 @@ function setupEventListeners() {
         product.qty = (product.qty || 0) + 1;
       } else if (btn.classList.contains('minus')) {
         product.qty = Math.max(0, (product.qty || 0) - 1);
-      }
-      
-      saveProducts();
-      renderAll();
-    }
-  });
-  
-  // Currency selection
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.currency-btn');
-    if (btn) {
-      selectedCurrency = btn.dataset.currency;
-      document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      updateChange();
-    }
-  });
-  
-  // Received amount input
-  document.addEventListener('input', (e) => {
-    if (e.target.id === 'receivedAmount') {
-      updateChange();
-    }
-  });
-  
-  // Refresh button
-  const refreshBtn = document.getElementById('refreshBtn');
-  if (refreshBtn) {
-    refreshBtn.addEventListener('click', () => {
-      window.location.reload();
-    });
-  }
-}
-
-function attachCartEvents() {
-  // Clear cart button
-  const clearBtn = document.getElementById('clearCartBtn');
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      if (confirm('Sigur doriți să ștergeți toate produsele din coș?')) {
-        productsData.forEach(p => p.qty = 0);
-        saveProducts();
-        renderAll();
-      }
-    });
-  }
-}
-
-function renderAll() {
-  renderProducts();
-  renderCart();
-  updateCartBadge();
-}
-
-// ===== SERVICE WORKER REGISTRATION =====
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('Service Worker înregistrat!');
-        
-        // Verifică dacă există o actualizare
-        registration.addEventListener('updatefound', () => {
-          const newWorker = registration.installing;
-          
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // Afișează butonul de reîncărcare
-              const refreshBtn = document.getElementById('refreshBtn');
-              if (refreshBtn) {
-                refreshBtn.style.display = 'flex';
-                refreshBtn.style.animation = 'pulse 1s infinite';
-              }
-            }
-          });
-        });
-      })
-      .catch(err => console.log('Service Worker eroare:', err));
-  });
-}
-
-// ===== PERIODIC UPDATE CHECK =====
-// Verifică actualizări la fiecare 30 de minute
-setInterval(checkForUpdates, 30 * 60 * 1000);
-
-// Verifică actualizări când utilizatorul revine în aplicație
-document.addEventListener('visibilitychange', () => {
-  if (!document.hidden) {
-    checkForUpdates();
-  }
-});
