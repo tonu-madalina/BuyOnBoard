@@ -6,6 +6,10 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #f4f6f8;
   color: #222;
@@ -457,18 +461,21 @@ body {
   color: #8b8b8b;
 }
 
-/* ===== BOTTOM BAR ===== */
+/* ===== BOTTOM BAR - FIX ===== */
 .bottomBar {
   position: fixed;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
   background: white;
   display: flex;
   justify-content: space-around;
-  padding: 8px 0 12px;
-  box-shadow: 0 -3px 10px rgba(0,0,0,.08);
+  align-items: center;
+  padding: 10px 0 14px;
+  box-shadow: 0 -3px 10px rgba(0,0,0,.1);
   z-index: 999;
+  border-top: 1px solid #e8e8e8;
 }
 
 .bottomBar button {
@@ -476,7 +483,7 @@ body {
   border: none;
   font-size: 13px;
   cursor: pointer;
-  padding: 4px 16px;
+  padding: 4px 20px;
   color: #888;
   transition: all 0.2s;
   position: relative;
@@ -484,10 +491,15 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 2px;
+  flex: 1;
 }
 
 .bottomBar button .icon {
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.bottomBar button span {
+  font-size: 12px;
 }
 
 .bottomBar button.active {
@@ -495,14 +507,18 @@ body {
   font-weight: 700;
 }
 
+.bottomBar button.active .icon {
+  color: #0F3D91;
+}
+
 .bottomBar button .badge {
   position: absolute;
-  top: -4px;
-  right: 4px;
+  top: -6px;
+  right: 10px;
   background: #dc3545;
   color: white;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: none;
   align-items: center;
@@ -520,11 +536,11 @@ body {
   color: white;
   border: none;
   border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  font-size: 28px;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
   box-shadow: 0 4px 16px rgba(0,0,0,.3);
-  z-index: 999;
+  z-index: 998;
   cursor: pointer;
   transition: all 0.3s;
   display: none;
@@ -540,16 +556,65 @@ body {
   transform: scale(0.9);
 }
 
-/* Animatie puls pentru buton */
+.refresh-btn.show {
+  display: flex;
+  animation: pulse 1s infinite;
+}
+
+/* ===== SCROLL TOP BUTTON ===== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 90px;
+  left: 16px;
+  background: #0F3D91;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  z-index: 998;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.1);
+}
+
+.scroll-top-btn:active {
+  transform: scale(0.9);
+}
+
+.scroll-top-btn.show {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== ANIMATIONS ===== */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
 
-.refresh-btn.show {
-  display: flex;
-  animation: pulse 1s infinite;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -645,11 +710,39 @@ body {
   }
   
   .refresh-btn {
-    width: 48px;
-    height: 48px;
-    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
     bottom: 80px;
     right: 12px;
+  }
+  
+  .scroll-top-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    bottom: 80px;
+    left: 12px;
+  }
+  
+  .bottomBar button {
+    padding: 4px 12px;
+  }
+  
+  .bottomBar button .icon {
+    font-size: 20px;
+  }
+  
+  .bottomBar button span {
+    font-size: 11px;
+  }
+  
+  .bottomBar button .badge {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    right: 4px;
+    top: -4px;
   }
 }
 
