@@ -3,6 +3,7 @@
   "short_name": "BuyOnBoard",
   "description": "Aplicație pentru vânzări la bord",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0F3D91",
