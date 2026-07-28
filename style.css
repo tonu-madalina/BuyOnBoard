@@ -453,7 +453,64 @@ body {
 .empty-cart {
   text-align: center;
   padding: 40px 0;
-  font-size: 18
+  font-size: 18px;
+  color: #8b8b8b;
+}
+
+/* ===== BOTTOM BAR ===== */
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0 12px;
+  box-shadow: 0 -3px 10px rgba(0,0,0,.08);
+  z-index: 999;
+}
+
+.bottomBar button {
+  background: none;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 16px;
+  color: #888;
+  transition: all 0.2s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.bottomBar button .icon {
+  font-size: 22px;
+}
+
+.bottomBar button.active {
+  color: #0F3D91;
+  font-weight: 700;
+}
+
+.bottomBar button .badge {
+  position: absolute;
+  top: -4px;
+  right: 4px;
+  background: #dc3545;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
 /* ===== REFRESH BUTTON ===== */
 .refresh-btn {
   position: fixed;
@@ -488,6 +545,11 @@ body {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
+}
+
+.refresh-btn.show {
+  display: flex;
+  animation: pulse 1s infinite;
 }
 
 /* ===== RESPONSIVE ===== */
