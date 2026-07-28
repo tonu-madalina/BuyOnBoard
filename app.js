@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   renderCart();
   updateCartBadge();
+  
+  // Verifică actualizări
+  checkForUpdates();
 });
 
 // ===== LOAD/SAVE PRODUCTS =====
@@ -285,6 +288,15 @@ function updateCartBadge() {
   }
 }
 
+// ===== CHECK FOR UPDATES =====
+function checkForUpdates() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.ready.then(registration => {
+      registration.update();  // Verifică dacă există o nouă versiune
+    });
+  }
+}
+
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
   // Search
@@ -356,6 +368,14 @@ function setupEventListeners() {
       updateChange();
     }
   });
+  
+  // Refresh button
+  const refreshBtn = document.getElementById('refreshBtn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+  }
 }
 
 function attachCartEvents() {
@@ -382,7 +402,36 @@ function renderAll() {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('Service Worker înregistrat!'))
+      .then(registration => {
+        console.log('Service Worker înregistrat!');
+        
+        // Verifică dacă există o actualizare
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // Afișează butonul de reîncărcare
+              const refreshBtn = document.getElementById('refreshBtn');
+              if (refreshBtn) {
+                refreshBtn.style.display = 'flex';
+                refreshBtn.style.animation = 'pulse 1s infinite';
+              }
+            }
+          });
+        });
+      })
       .catch(err => console.log('Service Worker eroare:', err));
   });
 }
+
+// ===== PERIODIC UPDATE CHECK =====
+// Verifică actualizări la fiecare 30 de minute
+setInterval(checkForUpdates, 30 * 60 * 1000);
+
+// Verifică actualizări când utilizatorul revine în aplicație
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) {
+    checkForUpdates();
+  }
+});
