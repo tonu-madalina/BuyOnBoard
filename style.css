@@ -27,6 +27,52 @@ body {
   align-items: center;
   box-shadow: 0 2px 10px rgba(0,0,0,.15);
 }
+/* ===== REFRESH BUTTON ===== */
+.refresh-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 16px;
+  background: #0F3D91;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 28px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  z-index: 999;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.refresh-btn:hover {
+  transform: scale(1.1);
+}
+
+.refresh-btn:active {
+  transform: scale(0.9);
+}
+
+/* Animatie puls pentru buton */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive pentru buton */
+@media (max-width: 480px) {
+  .refresh-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    bottom: 80px;
+    right: 12px;
+  }
+}
 
 .logo {
   font-size: 22px;
