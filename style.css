@@ -454,3 +454,178 @@ body {
   text-align: center;
   padding: 40px 0;
   font-size: 18
+/* ===== REFRESH BUTTON ===== */
+.refresh-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 16px;
+  background: #0F3D91;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 28px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  z-index: 999;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.refresh-btn:hover {
+  transform: scale(1.1);
+}
+
+.refresh-btn:active {
+  transform: scale(0.9);
+}
+
+/* Animatie puls pentru buton */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .product-name {
+    font-size: 11px;
+    min-height: 28px;
+  }
+  
+  .cart-header,
+  .cart-row {
+    grid-template-columns: 2fr 0.8fr 0.8fr 1.2fr;
+    font-size: 12px;
+  }
+  
+  .cart-total {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    font-size: 13px;
+    gap: 4px;
+  }
+  
+  .rest-label {
+    min-width: 80px;
+    font-size: 13px;
+  }
+  
+  .rest-value {
+    font-size: 18px;
+  }
+  
+  .currency-btn {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+  
+  .topbar {
+    padding: 10px 12px;
+  }
+  
+  .logo {
+    font-size: 18px;
+  }
+  
+  .top-buttons button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .search {
+    top: 56px;
+    padding: 8px 12px;
+  }
+  
+  #products, #cart {
+    margin-top: 104px;
+  }
+  
+  #products {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .product-card {
+    padding: 6px;
+  }
+  
+  .product-name {
+    font-size: 11px;
+    min-height: 28px;
+  }
+  
+  .product-price {
+    font-size: 12px;
+  }
+  
+  .product-code {
+    font-size: 10px;
+  }
+  
+  .qty-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+  
+  .qty-count {
+    font-size: 14px;
+    min-width: 16px;
+  }
+  
+  .product-image {
+    padding-top: 80%;
+  }
+  
+  .refresh-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    bottom: 80px;
+    right: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  #products {
+    gap: 4px;
+    padding: 4px;
+  }
+  
+  .product-card {
+    padding: 4px;
+  }
+  
+  .product-name {
+    font-size: 10px;
+    min-height: 24px;
+  }
+  
+  .product-price {
+    font-size: 11px;
+  }
+  
+  .product-code {
+    font-size: 9px;
+  }
+  
+  .qty-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+  
+  .qty-count {
+    font-size: 12px;
+    min-width: 14px;
+  }
+  
+  .product-image {
+    padding-top: 75%;
+  }
+}
