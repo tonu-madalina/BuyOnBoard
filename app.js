@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Verifică actualizări
   checkForUpdates();
   
-  // Setup scroll button
+  // Setup scroll button - ACEASTA ESTE FUNCȚIA CHEIE
   setupScrollButton();
 });
 
@@ -300,28 +300,41 @@ function checkForUpdates() {
   }
 }
 
-// ===== SCROLL TO TOP BUTTON =====
+// ===== SCROLL TO TOP BUTTON - FUNCȚIA COMPLETĂ =====
 function setupScrollButton() {
   const scrollBtn = document.getElementById('scrollTopBtn');
   
-  if (!scrollBtn) return;
+  // Dacă butonul nu există în HTML, ieșim
+  if (!scrollBtn) {
+    console.log('Butonul scroll nu a fost găsit în HTML');
+    return;
+  }
   
-  // Arată/ascunde butonul în funcție de scroll
-  window.addEventListener('scroll', () => {
+  console.log('Butonul scroll a fost găsit!');
+  
+  // Ascultăm evenimentul de scroll
+  window.addEventListener('scroll', function() {
+    // Dacă pagina este derulată mai mult de 300px
     if (window.pageYOffset > 300) {
       scrollBtn.classList.add('show');
+      console.log('Butonul arătat');
     } else {
       scrollBtn.classList.remove('show');
+      console.log('Butonul ascuns');
     }
   });
   
-  // Scroll la începutul paginii la click
-  scrollBtn.addEventListener('click', () => {
+  // La click, mergem sus cu animație smooth
+  scrollBtn.addEventListener('click', function() {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
+    console.log('Scroll sus!');
   });
+  
+  // Test inițial - ascunde butonul
+  scrollBtn.classList.remove('show');
 }
 
 // ===== EVENT LISTENERS =====
